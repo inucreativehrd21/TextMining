@@ -10,7 +10,8 @@ A comprehensive tool for Textmining
 - **Co-occurrence Networks**: Build and analyze keyword relationships
 - **Network Visualization**: Community detection and centrality analysis
 - **Memory Optimization**: Batch processing for large documents
-
+- **PDF crawling(Bing)**: Crawling PDF from Bing browser
+  
 ## Installation
 
 1. Install required packages:
@@ -115,9 +116,9 @@ config.batch_size = 5000 # Smaller for limited memory
 
 #######################################################################################
 
-# 한국어 PDF 키워드 분석 및 공동출현 네트워크 도구
+# 한국어 PDF 키워드 분석 및 공동출현 네트워크
 
-한국어 PDF 문서에서 키워드를 추출하고 공동출현 네트워크를 분석하는 종합 도구입니다.
+한국어 PDF 문서에서 키워드를 추출하고 공동출현 네트워크를 분석하는 파이썬 코드입니다.
 
 ## 주요 기능
 
@@ -127,7 +128,8 @@ config.batch_size = 5000 # Smaller for limited memory
 - **공동출현 네트워크**: 키워드 간 관계 분석 및 네트워크 구성
 - **네트워크 시각화**: 커뮤니티 탐지 및 중심성 분석
 - **메모리 최적화**: 대용량 문서를 위한 배치 처리
-
+- **pdf 크롤링(bing)**: bing 브라우저로부터 pdf 크롤링
+  
 ## 설치 방법
 
 1. 필요 패키지 설치:
