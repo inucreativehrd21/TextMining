@@ -10,7 +10,7 @@ A comprehensive tool for Textmining
 - **Co-occurrence Networks**: Build and analyze keyword relationships
 - **Network Visualization**: Community detection and centrality analysis
 - **Memory Optimization**: Batch processing for large documents
-- **PDF crawling(Bing)**: Crawling PDF from Bing browser
+- **PDF Crawling(Bing)**: Crawling PDF from Bing browser
   
 ## Installation
 
