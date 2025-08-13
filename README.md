@@ -28,12 +28,14 @@ from config import AnalysisConfig
 from main import run_complete_analysis
 
 ## Configure your analysis
+'''
 config = AnalysisConfig(
 pdf_folder="./your_pdf_folder",
 font_path="c:/Windows/Fonts/malgun.ttf", # Windows
 font_path="/System/Library/Fonts/AppleGothic.ttf", # macOS
 output_dir="./results"
 )
+'''
 
 ## Run analysis
 G, metrics, freq = run_complete_analysis(config)
@@ -43,16 +45,18 @@ G, metrics, freq = run_complete_analysis(config)
 python main.py
  
 ## Project Structure
+'''
 ├── TMconfig.py # Configuration management
+├── bing_pdf_crawler.py # Crawling pdf from bing(browser)
 ├── keyword_pdf_kor.py # Keyword extraction & analysis
 ├── cooccurrence_network.py # Network analysis & visualization
 ├── main.py # Main execution script
 ├── requirements.txt # Python dependencies
 ├── README.md # Project documentation
-├──
-├──
+├── example_config_eng.py # example form of config(eng)
+├── example_config.py # example form of config(kor)
 └── .gitignore # Git ignore rules
-
+'''
 
 ## Configuration Options
 
@@ -144,12 +148,15 @@ from config import AnalysisConfig
 from main import run_complete_analysis
 
 ## 분석 설정
+
+'''
 config = AnalysisConfig(
 pdf_folder="./your_pdf_folder",
 font_path="c:/Windows/Fonts/malgun.ttf", # Windows
 font_path="/System/Library/Fonts/AppleGothic.ttf", # macOS
 output_dir="./results"
 )
+'''
 
 ## 분석 실행
 G, metrics, freq = run_complete_analysis(config)
@@ -159,7 +166,10 @@ G, metrics, freq = run_complete_analysis(config)
 python main.py
 
 ## 프로젝트 구조
+
+'''
 ├── TMconfig.py # 설정 관리
+├── bing_pdf_crawler.py # pdf 크롤링(bing 브라우저)
 ├── keyword_pdf_kor.py # 키워드 추출 및 분석
 ├── cooccurrence_network.py # 네트워크 분석 및 시각화
 ├── main.py # 메인 실행 스크립트
@@ -168,7 +178,7 @@ python main.py
 ├── example_config_eng.py # 설정 예시 파일(영문)
 ├── example_config.py # 설정 예시 파일(한국어)
 └── .gitignore # Git 무시 규칙
-
+'''
 
 ## 설정 옵션
 
