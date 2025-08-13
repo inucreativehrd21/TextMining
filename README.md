@@ -113,7 +113,7 @@ config.batch_size = 5000 # Smaller for limited memory
 - [python-louvain](https://github.com/taynaud/python-louvain) for community detection
 
 
-##########################################################################################
+#######################################################################################
 
 # 한국어 PDF 키워드 분석 및 공동출현 네트워크 도구
 
