@@ -1,6 +1,5 @@
+
 import networkx as nx
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
 from collections import Counter
 from itertools import combinations
 import community
@@ -10,6 +9,17 @@ import json
 import os
 import logging
 from TMconfig import AnalysisConfig
+import matplotlib
+matplotlib.use('Agg')  # GUI 없이 이미지 생성용
+
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+font_path = 'c:/Windows/Fonts/malgun.ttf'  # 사용하시는 한글 폰트 경로
+font_prop = fm.FontProperties(fname=font_path)
+
+plt.rcParams['font.family'] = font_prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False  # 마이너스 부호 깨짐 방지
 
 class EnhancedCooccurrenceNetwork:
     def __init__(self, config: AnalysisConfig):
@@ -166,10 +176,10 @@ class EnhancedCooccurrenceNetwork:
                 edge_widths = [1.0 for _ in G.edges()]
             
             # 커뮤니티 시각화
-            nx.draw_networkx(G, pos, ax=ax1, node_color=node_colors, 
-                            node_size=node_sizes, width=edge_widths,
-                            font_properties=font_prop, font_size=8, 
-                            with_labels=True, edge_color='gray', alpha=0.7)
+            nx.draw_networkx(G, pos, ax=ax1, node_color=node_colors,
+                 node_size=node_sizes, width=edge_widths,
+                 font_family=plt.rcParams['font.family'], font_size=8,
+                 with_labels=True, edge_color='gray', alpha=0.7)
             ax1.set_title(f"{title} - 커뮤니티", fontsize=14)
             ax1.axis('off')
             
@@ -185,10 +195,10 @@ class EnhancedCooccurrenceNetwork:
                 else:
                     centrality_colors = [0.5 for _ in G.nodes()]
                 
-                nx.draw_networkx(G, pos, ax=ax2, node_color=centrality_colors, 
-                               cmap=plt.cm.Reds, node_size=node_sizes, width=edge_widths,
-                               font_properties=font_prop, font_size=8,
-                               with_labels=True, edge_color='gray', alpha=0.7)
+                nx.draw_networkx(G, pos, ax=ax2, node_color=node_colors,
+                 node_size=node_sizes, width=edge_widths,
+                 font_family=plt.rcParams['font.family'], font_size=8,
+                 with_labels=True, edge_color='gray', alpha=0.7)
                 ax2.set_title(f"{title} - 매개 중심성", fontsize=14)
             else:
                 # 중심성 정보가 없으면 degree 기반으로
@@ -196,10 +206,10 @@ class EnhancedCooccurrenceNetwork:
                 max_degree = max(degrees.values()) if degrees else 1
                 degree_colors = [degrees.get(n, 0) / max_degree for n in G.nodes()]
                 
-                nx.draw_networkx(G, pos, ax=ax2, node_color=degree_colors, 
-                               cmap=plt.cm.Blues, node_size=node_sizes, width=edge_widths,
-                               font_properties=font_prop, font_size=8,
-                               with_labels=True, edge_color='gray', alpha=0.7)
+                nx.draw_networkx(G, pos, ax=ax2, node_color=centrality_colors,
+                cmap=plt.cm.Reds, node_size=node_sizes, width=edge_widths,
+                font_family='Malgun Gothic', font_size=8,
+                with_labels=True, edge_color='gray', alpha=0.7)
                 ax2.set_title(f"{title} - 연결 정도", fontsize=14)
             
             ax2.axis('off')

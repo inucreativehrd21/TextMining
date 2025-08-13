@@ -67,10 +67,10 @@ def run_complete_analysis(config: AnalysisConfig):
 if __name__ == "__main__":
     # 실제 경로로 수정
     config = AnalysisConfig(
-        pdf_folder=r"your_pdf_folder_path",  # PDF 파일들이 있는 폴더 경로
+        pdf_folder=r"your_pdf_files_path",  # PDF 파일들이 있는 폴더 경로
         font_path=r"c:/Windows/Fonts/malgun.ttf",  # 한글 폰트 경로
         stopwords_file=r"your_stopwords_file_path",  # 불용어 파일 경로 (선택사항)
-        output_dir="./analysis_results",
+        output_dir=r"where_you_want_to_save_results",
         
         # 분석 파라미터 조정
         min_word_freq=3,  # 최소 단어 빈도

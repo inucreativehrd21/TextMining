@@ -1,3 +1,4 @@
+
 import os
 import fitz
 from konlpy.tag import Okt
@@ -8,6 +9,9 @@ import re
 import logging
 from typing import Set, List, Tuple
 from TMconfig import AnalysisConfig
+
+plt.rcParams['font.family'] = 'Malgun Gothic'  # 윈도우 기본 한글 폰트
+plt.rcParams['axes.unicode_minus'] = False     # 마이너스 부호 깨짐 방지
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
@@ -171,3 +175,4 @@ def get_enhanced_nouns_and_freq(config: AnalysisConfig) -> Tuple[List[str], Coun
     """호출 API"""
     analyzer = EnhancedKeywordAnalyzer(config)
     return analyzer.analyze()
+
