@@ -1,6 +1,6 @@
-# Korean PDF Keyword Analysis & Co-occurrence Network Tool
+# Python Textmining
 
-A comprehensive tool for extracting keywords from Korean PDF documents and analyzing their co-occurrence networks.
+A comprehensive tool for Textmining
 
 ## Features
 
