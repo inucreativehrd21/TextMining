@@ -186,30 +186,45 @@ class EnhancedCooccurrenceNetwork:
             # 오른쪽: 중심성 기반 시각화
             if metrics and 'centrality' in metrics and 'betweenness' in metrics['centrality']:
                 centrality = metrics['centrality']['betweenness']
-                if centrality:
-                    max_centrality = max(centrality.values())
-                    if max_centrality > 0:
-                        centrality_colors = [centrality.get(n, 0) / max_centrality for n in G.nodes()]
-                    else:
-                        centrality_colors = [0.5 for _ in G.nodes()]
-                else:
-                    centrality_colors = [0.5 for _ in G.nodes()]
-                
-                nx.draw_networkx(G, pos, ax=ax2, node_color=node_colors,
-                 node_size=node_sizes, width=edge_widths,
-                 font_family=plt.rcParams['font.family'], font_size=8,
-                 with_labels=True, edge_color='gray', alpha=0.7)
+                max_centrality = max(centrality.values()) if centrality else 1
+                centrality_values = [centrality.get(n, 0) for n in G.nodes()]
+
+                # 색상은 중심성 값 상대 비율로
+                centrality_colors = [val / max_centrality for val in centrality_values]
+
+                # 노드 크기도 중심성 값 비례로 조절 (최소, 최대 크기 지정)
+                min_size, max_size = 300, 1300
+                node_sizes_centrality = [
+                    min_size + (max_size - min_size) * (val / max_centrality) for val in centrality_values
+                ]
+
+                nx.draw_networkx(
+                    G, pos, ax=ax2,
+                    node_color=centrality_colors, cmap=plt.cm.Reds,
+                    node_size=node_sizes_centrality,
+                    width=edge_widths,
+                    font_family=plt.rcParams['font.family'], font_size=8,
+                    with_labels=True, edge_color='gray', alpha=0.7
+                )
                 ax2.set_title(f"{title} - 매개 중심성", fontsize=14)
             else:
-                # 중심성 정보가 없으면 degree 기반으로
+                # 기존 degree 기반 시각화 코드 유지
                 degrees = dict(G.degree())
                 max_degree = max(degrees.values()) if degrees else 1
                 degree_colors = [degrees.get(n, 0) / max_degree for n in G.nodes()]
-                
-                nx.draw_networkx(G, pos, ax=ax2, node_color=centrality_colors,
-                cmap=plt.cm.Reds, node_size=node_sizes, width=edge_widths,
-                font_family='Malgun Gothic', font_size=8,
-                with_labels=True, edge_color='gray', alpha=0.7)
+
+                nx.draw_networkx(
+                    G, pos, ax=ax2,
+                    node_color=degree_colors,
+                    cmap=plt.cm.Reds,
+                    node_size=node_sizes,
+                    width=edge_widths,
+                    font_family='Malgun Gothic',
+                    font_size=8,
+                    with_labels=True,
+                    edge_color='gray',
+                    alpha=0.7
+                )
                 ax2.set_title(f"{title} - 연결 정도", fontsize=14)
             
             ax2.axis('off')

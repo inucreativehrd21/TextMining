@@ -9,9 +9,17 @@ import re
 import logging
 from typing import Set, List, Tuple
 from TMconfig import AnalysisConfig
+import matplotlib
+matplotlib.use('Agg')  # GUI 없이 이미지 생성용
 
-plt.rcParams['font.family'] = 'Malgun Gothic'  # 윈도우 기본 한글 폰트
-plt.rcParams['axes.unicode_minus'] = False     # 마이너스 부호 깨짐 방지
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+font_path = 'c:/Windows/Fonts/malgun.ttf'  # 사용하시는 한글 폰트 경로
+font_prop = fm.FontProperties(fname=font_path)
+
+plt.rcParams['font.family'] = font_prop.get_name()
+plt.rcParams['axes.unicode_minus'] = False  # 마이너스 부호 깨짐 방지
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
