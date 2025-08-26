@@ -1,0 +1,8 @@
+
+networkx>=2.8
+matplotlib>=3.5
+PyMuPDF>=1.20
+konlpy>=0.6
+wordcloud>=1.9
+python-louvain>=0.16
+numpy>=1.21
